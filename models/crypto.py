@@ -16,8 +16,8 @@ class CryptoOps:
         data = json.loads(file.read())
         file.close()
 
-        self.__EncryptionKey = bytes(data["key"], "utf-8")
-        self.__IV = bytes(data["IV"], "utf-8")
+        self.__EncryptionKey = base64.b64decode(data["key"])
+        self.__IV = base64.b64decode(data["IV"])
 
     def EncryptBuffer(self, buffer) -> str:
         """
